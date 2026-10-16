@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DevPocket — Free Developer Tools (JSON, Timestamp, UUID, Regex)</title>
+  <meta name="description" content="Free browser-based developer utilities: JSON formatter & validator, Unix timestamp converter, UUID v4 generator, and JavaScript regex tester. All processing stays local.">
+  <meta name="theme-color" content="#315C4C">
+  <meta property="og:title" content="DevPocket — Free Developer Tools">
+  <meta property="og:description" content="JSON formatter, Unix timestamp converter, UUID generator, and regex tester. Free, private, and runs entirely in your browser.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://YOUR-DOMAIN-HERE/">
+  <link rel="canonical" href="https://YOUR-DOMAIN-HERE/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "DevPocket",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "description": "Free browser-based developer utilities: JSON formatter, Unix timestamp converter, UUID v4 generator, and JavaScript regex tester.",
+    "url": "https://YOUR-DOMAIN-HERE/",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./" aria-label="DevPocket home">
+        <span class="brand-mark" aria-hidden="true">{ }</span>
+        <span class="brand-name">DevPocket</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#json-tool">JSON</a>
+        <a href="#timestamp-tool">Timestamp</a>
+        <a href="#uuid-tool">UUID</a>
+        <a href="#regex-tool">Regex</a>
+        <a href="#privacy">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Developer tools that stay on your machine</h1>
+        <p class="hero-lead">Format JSON, convert timestamps, generate UUIDs, and test regular expressions — all in the browser, with no accounts and no uploads.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#json-tool">JSON Formatter</a>
+          <a class="btn btn-secondary" href="#timestamp-tool">Timestamp</a>
+          <a class="btn btn-secondary" href="#uuid-tool">UUID</a>
+          <a class="btn btn-secondary" href="#regex-tool">Regex</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="tool-nav-section">
+      <div class="container">
+        <nav class="tool-nav" aria-label="Jump to tool">
+          <a href="#json-tool" class="tool-nav-item">
+            <span class="tool-nav-label">JSON Formatter & Validator</span>
+            <span class="tool-nav-desc">Format, minify, validate</span>
+          </a>
+          <a href="#timestamp-tool" class="tool-nav-item">
+            <span class="tool-nav-label">Unix Timestamp Converter</span>
+            <span class="tool-nav-desc">Seconds, milliseconds, UTC & local</span>
+          </a>
+          <a href="#uuid-tool" class="tool-nav-item">
+            <span class="tool-nav-label">UUID v4 Generator</span>
+            <span class="tool-nav-desc">Secure random identifiers</span>
+          </a>
+          <a href="#regex-tool" class="tool-nav-item">
+            <span class="tool-nav-label">Regex Tester</span>
+            <span class="tool-nav-desc">Matches, groups & flags</span>
+          </a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- JSON TOOL -->
+    <section class="tool-section" id="json-tool" aria-labelledby="json-heading">
+      <div class="container">
+        <div class="tool-card">
+          <header class="tool-card-header">
+            <div>
+              <h2 id="json-heading">JSON Formatter & Validator</h2>
+              <p class="tool-card-desc">Format, minify, or validate JSON. Processing stays in your browser.</p>
+            </div>
+            <div class="tool-card-actions">
+              <button type="button" class="btn btn-ghost btn-sm" id="json-sample">Load sample</button>
+              <button type="button" class="btn btn-ghost btn-sm" id="json-clear">Clear</button>
+            </div>
+          </header>
+
+          <div class="json-workspace">
+            <div class="json-panel">
+              <label class="field-label" for="json-input">Input</label>
+              <textarea id="json-input" class="code-input" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder='{"key": "value"}' rows="10"></textarea>
+              <div class="panel-meta" id="json-input-meta">0 characters</div>
+            </div>
+
+            <div class="json-actions">
+              <button type="button" class="btn btn-primary" id="json-format">Format</button>
+              <button type="button" class="btn btn-secondary" id="json-minify">Minify</button>
+              <button type="button" class="btn btn-secondary" id="json-validate">Validate</button>
+              <button type="button" class="btn btn-ghost" id="json-swap">Swap</button>
+              <div class="indent-group">
+                <label for="json-indent">Indent</label>
+                <select id="json-indent">
+                  <option value="2" selected>2 spaces</option>
+                  <option value="4">4 spaces</option>
+                  <option value="tab">Tab</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="json-panel">
+              <div class="panel-top">
+                <label class="field-label" for="json-output">Output</label>
+                <button type="button" class="btn btn-ghost btn-sm" id="json-copy">Copy</button>
+              </div>
+              <textarea id="json-output" class="code-input" spellcheck="false" readonly placeholder="Result appears here…" rows="10"></textarea>
+              <div class="panel-meta" id="json-output-meta">No output</div>
+            </div>
+          </div>
+
+          <div class="status-bar" id="json-status" role="status" aria-live="polite">
+            Paste JSON or load the sample to begin.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMESTAMP TOOL -->
+    <section class="tool-section" id="timestamp-tool" aria-labelledby="timestamp-heading">
+      <div class="container">
+        <div class="tool-card">
+          <header class="tool-card-header">
+            <div>
+              <h2 id="timestamp-heading">Unix Timestamp Converter</h2>
+              <p class="tool-card-desc">Convert between Unix timestamps and human-readable dates. Supports seconds and milliseconds.</p>
+            </div>
+          </header>
+
+          <div class="tool-grid">
+            <div class="tool-block">
+              <h3 class="block-title">Timestamp → Date</h3>
+              <label class="field-label" for="ts-input">Unix timestamp</label>
+              <input type="text" id="ts-input" class="text-input" inputmode="numeric" placeholder="e.g. 1735689600 or 1735689600000" autocomplete="off">
+              <p class="field-hint" id="ts-hint">Enter a numeric timestamp. Values ≥ 1e12 are treated as milliseconds.</p>
+              <div class="btn-row">
+                <button type="button" class="btn btn-primary" id="ts-convert">Convert</button>
+                <button type="button" class="btn btn-secondary" id="ts-now">Use current time</button>
+                <button type="button" class="btn btn-ghost" id="ts-copy">Copy result</button>
+              </div>
+              <div class="output-box" id="ts-output" aria-live="polite"></div>
+              <div class="status-text" id="ts-status" role="status" aria-live="polite"></div>
+            </div>
+
+            <div class="tool-block">
+              <h3 class="block-title">Date → Timestamp</h3>
+              <label class="field-label" for="date-input">Date and time</label>
+              <input type="datetime-local" id="date-input" class="text-input">
+              <div class="btn-row">
+                <button type="button" class="btn btn-primary" id="date-convert">Convert</button>
+              </div>
+              <div class="output-box" id="date-output" aria-live="polite"></div>
+              <div class="status-text" id="date-status" role="status" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UUID TOOL -->
+    <section class="tool-section" id="uuid-tool" aria-labelledby="uuid-heading">
+      <div class="container">
+        <div class="tool-card">
+          <header class="tool-card-header">
+            <div>
+              <h2 id="uuid-heading">UUID v4 Generator</h2>
+              <p class="tool-card-desc">Generate cryptographically random UUID version 4 identifiers.</p>
+            </div>
+          </header>
+
+          <div class="uuid-controls">
+            <div class="control-group">
+              <label class="field-label" for="uuid-count">Number of UUIDs</label>
+              <select id="uuid-count" class="text-input">
+                <option value="1" selected>1</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+            </div>
+            <label class="checkbox-label">
+              <input type="checkbox" id="uuid-uppercase">
+              <span>Uppercase output</span>
+            </label>
+            <div class="btn-row">
+              <button type="button" class="btn btn-primary" id="uuid-generate">Generate</button>
+              <button type="button" class="btn btn-secondary" id="uuid-copy">Copy all</button>
+              <button type="button" class="btn btn-ghost" id="uuid-clear">Clear</button>
+            </div>
+          </div>
+
+          <div class="output-box mono" id="uuid-output" aria-live="polite"></div>
+          <div class="status-text" id="uuid-status" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REGEX TOOL -->
+    <section class="tool-section" id="regex-tool" aria-labelledby="regex-heading">
+      <div class="container">
+        <div class="tool-card">
+          <header class="tool-card-header">
+            <div>
+              <h2 id="regex-heading">Regular Expression Tester</h2>
+              <p class="tool-card-desc">Test JavaScript regular expressions. View matches, indices, and capture groups.</p>
+            </div>
+            <div class="tool-card-actions">
+              <button type="button" class="btn btn-ghost btn-sm" id="regex-example">Load email example</button>
+              <button type="button" class="btn btn-ghost btn-sm" id="regex-clear">Clear</button>
+            </div>
+          </header>
+
+          <div class="regex-form">
+            <div class="regex-row">
+              <div class="control-group grow">
+                <label class="field-label" for="regex-pattern">Pattern</label>
+                <input type="text" id="regex-pattern" class="text-input mono" placeholder="e.g. \b\w+@\w+\.\w+\b" autocomplete="off" spellcheck="false">
+              </div>
+              <div class="control-group flags-group">
+                <label class="field-label" for="regex-flags">Flags</label>
+                <input type="text" id="regex-flags" class="text-input mono" value="gi" placeholder="gimsuyd" autocomplete="off" spellcheck="false" maxlength="8">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="field-label" for="regex-text">Test text</label>
+              <textarea id="regex-text" class="code-input" rows="5" placeholder="Enter text to match against…" spellcheck="false"></textarea>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn btn-primary" id="regex-test">Test regex</button>
+            </div>
+          </div>
+
+          <div class="output-box mono" id="regex-output" aria-live="polite"></div>
+          <div class="status-text" id="regex-status" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVACY -->
+    <section class="privacy-section" id="privacy">
+      <div class="container">
+        <h2>Privacy</h2>
+        <p>All four tools run entirely in your browser. Input is not sent to a server. Clipboard and secure random number generation may require HTTPS or localhost. Avoid pasting secrets into any tool you do not trust.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand" href="./">
+        <span class="brand-mark" aria-hidden="true">{ }</span>
+        <span class="brand-name">DevPocket</span>
+      </a>
+      <p class="footer-note">Free browser-based developer utilities. No accounts, no uploads.</p>
+      <p class="footer-copy">© <span id="year"></span> DevPocket</p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
