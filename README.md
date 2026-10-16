@@ -83,9 +83,4 @@ The separate HTML pages (`timestamp-converter.html`, `uuid-generator.html`, `reg
 - [ ] Desktop and mobile layouts usable
 - [ ] No console errors on load
 
-## Design notes
 
-- Neutral palette with green accent (`#315C4C`)
-- System font stack + monospace for code
-- Max content width ~1120 px
-- Cards with subtle borders, no gradients or heavy shadows

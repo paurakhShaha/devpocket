@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://YOUR-DOMAIN-HERE/sitemap.xml
+Sitemap: devpocket.shahpaurakh81.workers.dev
+sitemap.xml
